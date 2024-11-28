@@ -1,6 +1,6 @@
 # dip-kurs-server
 ## Описание:
-  База данных сделана на PostgreSQL -> Файл базы: dump.sql
+  База данных сделана на PostgreSQL -> Файл базы: dump.sql\n
   Для развертки базы данных:
     ```
     psql -U <username> -h <hostname> -p <port> -d <new_database_name> -f dump.sql
