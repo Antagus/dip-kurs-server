@@ -136,4 +136,6 @@ router.put("/:id", asyncHandler(UserController.updateUser));
  */
 router.delete("/:id", asyncHandler(UserController.deleteUser));
 
+router.post("/auth/login", asyncHandler(UserController.authUser));
+
 export default router;

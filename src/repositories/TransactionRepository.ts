@@ -6,11 +6,11 @@ export class TransactionRepository {
   static async createTransaction(
     transaction: Omit<Transaction, "id">
   ): Promise<Transaction> {
-    const { accountId, userId, categoryId, isIncome, amount } = transaction;
+    const { accountId, userId, categoryId, isIncome, amount, name } = transaction;
 
     const result = await pool.query(
-      "SELECT * FROM create_transaction($1, $2, $3, $4, $5)",
-      [accountId, userId, categoryId, isIncome, amount]
+      "SELECT * FROM create_transaction($1, $2, $3, $4, $5, $6)",
+      [accountId, userId, categoryId, isIncome, amount, name]
     );
     return result.rows[0];
   }
@@ -48,7 +48,7 @@ export class TransactionRepository {
     accountId: number
   ): Promise<Transaction[]> {
     const result = await pool.query(
-      "SELECT * FROM get_account_transactions($1)",
+      `SELECT * FROM "Transaction" where account_id=$1`,
       [accountId]
     );
     return result.rows;

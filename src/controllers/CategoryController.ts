@@ -25,11 +25,13 @@ export class CategoryController {
   static async updateCategory(req: Request, res: Response): Promise<void> {
     try {
       const id = Number(req.params.id);
-      const { categoryName, image } = req.body;
+      const { categoryName, image, categoryType, color } = req.body;
       const updatedCategory = await CategoryService.updateCategory(
         id,
         categoryName,
-        image
+        image,
+        categoryType,
+        color
       );
       res.json(updatedCategory);
     } catch (error) {

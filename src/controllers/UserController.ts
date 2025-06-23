@@ -53,4 +53,14 @@ export class UserController {
       res.status(500).json({ message: getErrorMessage(error) });
     }
   }
+
+  static async authUser(req: Request, res: Response) {
+    try {
+      const { email, password } = req.body;
+      const idAuthUser = await UserService.authUser(email, password);
+      res.status(200).json({ user: idAuthUser });
+    } catch (error) {
+      res.status(500).json({ message: getErrorMessage(error) });
+    }
+  }
 }

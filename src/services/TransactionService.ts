@@ -7,9 +7,9 @@ export class TransactionService {
   static async createTransaction(
     transaction: Omit<Transaction, "id">
   ): Promise<Transaction> {
-    const { accountId, userId, categoryId, isIncome, amount } = transaction;
+    const { accountId, userId, categoryId, isIncome, amount, name } = transaction;
 
-    if (!accountId || !userId || !categoryId || amount === undefined) {
+    if (!accountId || !userId) {
       throw new ValidationError(
         "All fields are required: accountId, userId, categoryId, isIncome, amount."
       );

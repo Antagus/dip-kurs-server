@@ -51,15 +51,15 @@ export class UserRepository {
     await pool.query("SELECT delete_user($1)", [id]);
   }
 
-  static async authenticate(
-    email: string,
-    password: string
-  ): Promise<User | null> {
-    const result = await pool.query("SELECT * FROM authenticate_user($1, $2)", [
-      email,
-      password,
-    ]);
-    return result.rows[0] || null;
+  static async authenticate(email: string, password: string): Promise<number> {
+    const result = await pool.query(
+      "SELECT * FROM get_user_id_by_credentials($1, $2)",
+      [email, password]
+    );
+
+    console.log(result.rows[0]);
+    console.log(result);
+    return result.rows[0];
   }
 
   static async findByEmail(email: string): Promise<User | null> {

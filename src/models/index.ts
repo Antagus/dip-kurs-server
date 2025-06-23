@@ -22,8 +22,10 @@ export interface Account {
 export interface Category {
   id: number;
   image: string | null;
-  categoryName: string;
+  categoryType: string;
   userId: number;
+  color: string;
+  categoryName: string;
 }
 
 export interface Transaction {
@@ -34,6 +36,7 @@ export interface Transaction {
   isIncome: boolean;
   amount: number;
   transactionDate: Date;
+  name: string;
 }
 
 export interface Note {

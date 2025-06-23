@@ -13,7 +13,7 @@ export class AccountService {
       );
     }
 
-    const allowedCurrencies = ["USD", "EUR", "RUB"];
+    const allowedCurrencies = ["USD", "EUR", "RUB", "BTC", "ETH"];
     if (!allowedCurrencies.includes(currency)) {
       throw new ValidationError(
         `Currency must be one of the following: ${allowedCurrencies.join(", ")}`

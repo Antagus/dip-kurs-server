@@ -34,7 +34,9 @@ export class CategoryService {
   static async updateCategory(
     id: number,
     categoryName: string,
-    image: string
+    image: string,
+    categoryType: string,
+    color: string
   ): Promise<Category | null> {
     if (!id || !categoryName) {
       throw new ValidationError("Category ID and name are required.");
@@ -45,18 +47,20 @@ export class CategoryService {
       throw new ValidationError("Category not found.");
     }
 
-    return await CategoryRepository.updateCategory(id, categoryName, image);
+    return await CategoryRepository.updateCategory(
+      id,
+      categoryName,
+      image,
+      categoryType,
+      color
+    );
   }
 
   // Удаление категории
   static async deleteCategory(id: number): Promise<void> {
     if (!id) {
       throw new ValidationError("Category ID is required.");
-    }
-
-    const category = await CategoryRepository.getCategoryById(id);
-    if (!category) {
-      throw new ValidationError("Category not found.");
+      return;
     }
 
     await CategoryRepository.deleteCategory(id);

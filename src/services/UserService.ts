@@ -24,4 +24,8 @@ export class UserService {
   static async deleteUser(id: number): Promise<void> {
     return await UserRepository.delete(id);
   }
+
+  static async authUser (email: string, password: string): Promise<number | null>  {
+    return await UserRepository.authenticate(email, password);
+  }
 }
