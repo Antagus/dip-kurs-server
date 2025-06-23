@@ -18,7 +18,7 @@ const DB_HOST = process.env.DB_HOST || "localhost";
 
 app.use(
   cors({
-    origin: [`http://localhost:3000`],
+    origin: [`http://localhost:3000`, `http://89.111.169.232:3000`],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
